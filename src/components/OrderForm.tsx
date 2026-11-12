@@ -261,12 +261,12 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onOrderSuccess }) => {
                           />
                         </label>
 
-                        {/* Thumbnail image */}
+                        {/* Thumbnail image - Enlarged */}
                         <img
                           src={prod.image}
                           alt={prod.name}
                           onClick={() => toggleProduct(prod.id)}
-                          className="w-13 h-13 sm:w-16 sm:h-16 rounded-lg object-cover border border-gray-300 shadow-2xs cursor-pointer"
+                          className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-gray-300 shadow-sm cursor-pointer"
                         />
                       </div>
 
@@ -275,20 +275,20 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onOrderSuccess }) => {
                         {/* Title with multiplier */}
                         <div
                           onClick={() => toggleProduct(prod.id)}
-                          className="font-bold text-xs sm:text-sm text-gray-900 cursor-pointer truncate"
+                          className="font-bold text-sm sm:text-base text-gray-900 cursor-pointer truncate"
                           title={prod.name}
                         >
                           {prod.name} × {qty}
                         </div>
 
                         {/* Stepper + Price Row */}
-                        <div className="flex items-center gap-2 sm:gap-3 mt-2">
+                        <div className="flex items-center gap-2.5 sm:gap-3.5 mt-2">
                           {/* Stepper buttons [-] [qty] [+] */}
-                          <div className="flex items-center border border-gray-300 rounded-md bg-white overflow-hidden shadow-2xs">
+                          <div className="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-2xs">
                             <button
                               type="button"
                               onClick={() => updateQuantity(prod.id, -1)}
-                              className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center text-gray-600 hover:bg-gray-100 border-r border-gray-300 text-xs sm:text-sm font-bold cursor-pointer select-none active:bg-gray-200"
+                              className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 border-r border-gray-300 text-sm font-bold cursor-pointer select-none active:bg-gray-200"
                               title="পরিমাণ কমান"
                             >
                               -
@@ -300,12 +300,12 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onOrderSuccess }) => {
                                 const val = parseInt(e.target.value.replace(/[^0-9]/g, ''), 10);
                                 setDirectQuantity(prod.id, val);
                               }}
-                              className="w-7 sm:w-9 h-6 sm:h-7 text-center text-xs sm:text-sm font-bold text-gray-800 border-none focus:outline-none bg-transparent"
+                              className="w-8 sm:w-10 h-7 sm:h-8 text-center text-xs sm:text-sm font-bold text-gray-800 border-none focus:outline-none bg-transparent"
                             />
                             <button
                               type="button"
                               onClick={() => updateQuantity(prod.id, 1)}
-                              className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center text-gray-600 hover:bg-gray-100 border-l border-gray-300 text-xs sm:text-sm font-bold cursor-pointer select-none active:bg-gray-200"
+                              className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 border-l border-gray-300 text-sm font-bold cursor-pointer select-none active:bg-gray-200"
                               title="পরিমাণ বাড়ান"
                             >
                               +
@@ -313,7 +313,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onOrderSuccess }) => {
                           </div>
 
                           {/* Calculated Item Price (Bengali Taka Format) */}
-                          <div className="font-bold text-xs sm:text-sm text-gray-900 tracking-tight whitespace-nowrap">
+                          <div className="font-bold text-sm sm:text-base text-gray-900 tracking-tight whitespace-nowrap">
                             {itemTotalPrice.toFixed(2)}৳
                           </div>
                         </div>
