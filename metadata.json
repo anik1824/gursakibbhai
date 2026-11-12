@@ -1,0 +1,6 @@
+{
+  "name": "গ্রামের পণ্য - খাঁটি খেজুরের গুড়",
+  "description": "যশোরের ঐতিহ্যবাহী ১০০% খাঁটি খেজুরের পাটালি ও ঝোলা গুড়। চিনি ও কেমিক্যাল মুক্ত প্রাকৃতিক সুস্বাদু গুড় ক্যাশ অন ডেলিভারিতে সারাদেশে।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

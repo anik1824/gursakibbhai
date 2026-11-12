@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #FBF4E8;
+    color: #2D180B;
+  }
+
+  h1, h2, h3, .font-bengali-serif {
+    font-family: 'Noto Serif Bengali', 'Hind Siliguri', serif;
+  }
+}
+
+/* Custom smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Pulse animation for CTA button */
+@keyframes warm-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 20px rgba(180, 83, 9, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(180, 83, 9, 0.65);
+  }
+}
+
+.animate-warm-pulse {
+  animation: warm-pulse 2.2s infinite ease-in-out;
+}
+
+/* Grain texture overlay */
+.bg-subtle-pattern {
+  background-color: #FBF4E8;
+  background-image: radial-gradient(#d3bc9c 0.75px, transparent 0.75px), radial-gradient(#d3bc9c 0.75px, #FBF4E8 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
