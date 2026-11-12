@@ -28,8 +28,12 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
     window.print();
   };
 
+  const itemsText = order.items && order.items.length > 0
+    ? order.items.map((i) => `${i.name} (${i.quantity}টি)`).join(', ')
+    : order.selectedPackage?.name || 'খেজুরের গুড়';
+
   const whatsappMessage = encodeURIComponent(
-    `আসসালামু আলাইকুম, আমি গ্রামের পণ্য থেকে যশোরের খেজুরের গুড় অর্ডার করেছি। আমার অর্ডার আইডি: ${order.orderNumber}, নাম: ${order.customerName}, ফোন: ${order.customerPhone}, পরিমাণ: ${order.quantity} x ${order.selectedPackage.name}, সর্বমোট: ৳${order.total}।`
+    `আসসালামু আলাইকুম, আমি গ্রামের পণ্য থেকে যশোরের খেজুরের গুড় অর্ডার করেছি। আমার অর্ডার আইডি: ${order.orderNumber}, নাম: ${order.customerName}, ফোন: ${order.customerPhone}, পণ্য: ${itemsText}, সর্বমোট: ৳${order.total}।`
   );
 
   return (
@@ -99,17 +103,35 @@ export const OrderSuccessModal: React.FC<OrderSuccessModalProps> = ({
             <div className="font-bold text-[#3D1A07] border-b border-[#F0E3D3] pb-1.5">
               অর্ডারের আইটেম:
             </div>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="font-bold text-[#3D1A07]">{order.selectedPackage.name}</p>
-                <p className="text-xs text-[#78350F]/70">
-                  পরিমাণ: {toBengaliNumber(order.quantity)} টি × ৳{toBengaliNumber(order.selectedPackage.discountPrice)}
-                </p>
+            {order.items && order.items.length > 0 ? (
+              <div className="space-y-2 divide-y divide-gray-100">
+                {order.items.map((it) => (
+                  <div key={it.id} className="flex items-center justify-between pt-1">
+                    <div>
+                      <p className="font-bold text-[#3D1A07]">{it.name}</p>
+                      <p className="text-xs text-[#78350F]/70">
+                        পরিমাণ: {toBengaliNumber(it.quantity)} টি × ৳{toBengaliNumber(it.price)}
+                      </p>
+                    </div>
+                    <span className="font-bold text-sm text-[#92400E]">
+                      ৳{toBengaliNumber(it.price * it.quantity)}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <span className="font-bold text-sm text-[#92400E]">
-                ৳{toBengaliNumber(order.subtotal)}
-              </span>
-            </div>
+            ) : order.selectedPackage ? (
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-bold text-[#3D1A07]">{order.selectedPackage.name}</p>
+                  <p className="text-xs text-[#78350F]/70">
+                    পরিমাণ: {toBengaliNumber(order.quantity || 1)} টি × ৳{toBengaliNumber(order.selectedPackage.discountPrice)}
+                  </p>
+                </div>
+                <span className="font-bold text-sm text-[#92400E]">
+                  ৳{toBengaliNumber(order.subtotal)}
+                </span>
+              </div>
+            ) : null}
 
             <div className="border-t border-[#F0E3D3] pt-2 space-y-1 text-xs">
               <div className="flex justify-between">

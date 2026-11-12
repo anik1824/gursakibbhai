@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Phone, MessageCircle } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { GurPackage } from '../types';
 import { STORE_INFO } from '../data/gurData';
 
@@ -23,25 +23,6 @@ export const StickyBottomBar: React.FC<StickyBottomBarProps> = ({
   return (
     <div className="fixed bottom-0 inset-x-0 z-40 bg-[#FFFDF9]/95 backdrop-blur-md border-t-2 border-[#B45309] shadow-2xl p-2.5 sm:hidden">
       <div className="flex items-center justify-between gap-2">
-        {/* Left: Quick Phone & WhatsApp */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          <a
-            href={`tel:${STORE_INFO.phoneRaw}`}
-            className="w-10 h-10 rounded-xl bg-[#FBF4E8] border border-[#DFCBB5] text-[#78350F] flex items-center justify-center hover:bg-[#EADBCE]"
-            title="সরাসরি কল দিন"
-          >
-            <Phone className="w-4 h-4 text-[#B45309]" />
-          </a>
-          <a
-            href={STORE_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#128C7E] flex items-center justify-center hover:bg-[#25D366]/25"
-            title="WhatsApp এ কথা বলুন"
-          >
-            <MessageCircle className="w-5 h-5 text-[#128C7E]" />
-          </a>
-        </div>
 
         {/* Center: Selected Pack Price Info */}
         <div className="text-left overflow-hidden">

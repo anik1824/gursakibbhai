@@ -8,6 +8,7 @@ import { OrderForm } from './components/OrderForm';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { FaqSection } from './components/FaqSection';
 import { StickyBottomBar } from './components/StickyBottomBar';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { OrderListDrawer } from './components/OrderListDrawer';
 import { GUR_PACKAGES, STORE_INFO } from './data/gurData';
 import { GurPackage, CustomerOrder } from './types';
@@ -159,16 +160,15 @@ export default function App() {
         {/* 4. Customer Testimonials & Reviews */}
         <ReviewsSection />
 
-        {/* 6. The 1-Step Checkout Order Form */}
-        <OrderForm
-          selectedPackage={selectedPackage}
-          onSelectPackage={setSelectedPackage}
-          onOrderSuccess={handleOrderSuccess}
-        />
+        {/* 6. The 1-Step Checkout Order Form (Matching Image 2) */}
+        <OrderForm onOrderSuccess={handleOrderSuccess} />
 
         {/* 7. Frequently Asked Questions (FAQ) */}
         <FaqSection />
       </main>
+
+      {/* Floating WhatsApp Support Button (Matching Image 1) */}
+      <FloatingWhatsApp />
 
       {/* Sticky Bottom Order Bar for Mobile */}
       <StickyBottomBar

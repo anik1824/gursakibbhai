@@ -137,11 +137,17 @@ export const OrderListDrawer: React.FC<OrderListDrawerProps> = ({
                 {/* Items & Billing */}
                 <div className="bg-[#FBF4E8] p-2 rounded-lg border border-[#EADBCE] flex items-center justify-between">
                   <div>
-                    <span className="font-medium text-[#451A03] block">
-                      {ord.selectedPackage.name}
-                    </span>
+                    {ord.items && ord.items.length > 0 ? (
+                      <span className="font-medium text-[#451A03] block">
+                        {ord.items.map((it) => `${it.name} (${toBengaliNumber(it.quantity)})`).join(', ')}
+                      </span>
+                    ) : ord.selectedPackage ? (
+                      <span className="font-medium text-[#451A03] block">
+                        {ord.selectedPackage.name}
+                      </span>
+                    ) : null}
                     <span className="text-[11px] text-[#78350F]/70">
-                      পরিমাণ: {toBengaliNumber(ord.quantity)} টি | {ord.deliveryArea === 'inside_dhaka' ? 'ঢাকা' : 'ঢাকার বাইরে'}
+                      ডেলিভারি: {ord.deliveryArea === 'inside_dhaka' ? 'ঢাকা' : 'ঢাকার বাইরে'}
                     </span>
                   </div>
                   <span className="font-black text-sm text-[#92400E]">

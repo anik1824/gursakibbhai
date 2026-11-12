@@ -2,7 +2,59 @@ import heroImg from '../assets/images/jessore_gur_hero_1794499057825.jpg';
 import boilingImg from '../assets/images/boiling_gur_pot_1794499058849.jpg';
 import pithaImg from '../assets/images/pitha_with_gur_1794499057924.jpg';
 import packagingImg from '../assets/images/packaging_presentation_1794499076581.jpg';
-import { GurPackage, ReviewItem, FaqItem } from '../types';
+import jholaJarImg from '../assets/images/jhola_gur_jar_1794507048040.jpg';
+import foilPataliImg from '../assets/images/foil_patali_gur_1794507048093.jpg';
+import danadarGurImg from '../assets/images/danadar_gur_1794507069082.jpg';
+import golPataliImg from '../assets/images/gol_patali_gur_1794507048802.jpg';
+import chocolateGurImg from '../assets/images/chocolate_gur_1794507069477.jpg';
+import liquidGur2kgImg from '../assets/images/liquid_gur_2kg_1794507070762.jpg';
+import { GurPackage, GurProduct, ReviewItem, FaqItem } from '../types';
+
+export const CHECKOUT_PRODUCTS: GurProduct[] = [
+  {
+    id: 'jhola-1kg',
+    name: '১ কেজি ঝোলা গুড়',
+    weight: '১ কেজি',
+    price: 330,
+    image: jholaJarImg,
+  },
+  {
+    id: 'foil-patali-1kg',
+    name: '১ কেজি ফয়েল পাটলি গুড়',
+    weight: '১ কেজি',
+    price: 380,
+    image: foilPataliImg,
+  },
+  {
+    id: 'danadar-1kg',
+    name: '১ কেজি দানাদার গুড়',
+    weight: '১ কেজি',
+    price: 360,
+    image: danadarGurImg,
+  },
+  {
+    id: 'gol-patali-1kg',
+    name: '১ কেজি গোল পাটালি গুড়',
+    weight: '১ কেজি',
+    price: 350,
+    image: golPataliImg,
+    isDefaultSelected: true,
+  },
+  {
+    id: 'chocolate-1kg',
+    name: '১ কেজি চকলেট গুড়',
+    weight: '১ কেজি',
+    price: 550,
+    image: chocolateGurImg,
+  },
+  {
+    id: 'liquid-2kg',
+    name: '২ কেজি লিকুইড গুড়',
+    weight: '২ কেজি',
+    price: 700,
+    image: liquidGur2kgImg,
+  },
+];
 
 export const STORE_INFO = {
   name: 'গ্রামের পণ্য',

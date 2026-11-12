@@ -1,3 +1,21 @@
+export interface GurProduct {
+  id: string;
+  name: string;
+  weight: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  isDefaultSelected?: boolean;
+}
+
+export interface OrderItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
 export interface GurPackage {
   id: string;
   name: string;
@@ -18,8 +36,9 @@ export interface CustomerOrder {
   customerName: string;
   customerPhone: string;
   customerAddress: string;
-  selectedPackage: GurPackage;
-  quantity: number;
+  items: OrderItem[];
+  selectedPackage?: GurPackage;
+  quantity?: number;
   deliveryArea: 'inside_dhaka' | 'outside_dhaka';
   deliveryFee: number;
   subtotal: number;
