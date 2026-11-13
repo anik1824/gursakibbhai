@@ -30,9 +30,9 @@ export default function SiteSettings() {
             <Input value={v.tagline} onChange={(e) => s.patch({ tagline: e.target.value })} />
           </Field>
           <Field label="হটলাইন নম্বর (যেভাবে দেখাবে)">
-            <Input value={v.phone} onChange={(e) => s.patch({ phone: e.target.value })} placeholder="01580-946990" />
+            <Input value={v.phone} onChange={(e) => s.patch({ phone: e.target.value })} placeholder="01607-365565" />
           </Field>
-          <Field label="WhatsApp নম্বর" hint="যেমন: 8801580946990 বা 01580946990">
+          <Field label="WhatsApp নম্বর" hint="যেমন: 8801607365565 বা 01607365565">
             <Input value={v.whatsapp} onChange={(e) => s.patch({ whatsapp: e.target.value })} />
           </Field>
           <Field label="ঠিকানা" className="sm:col-span-2">

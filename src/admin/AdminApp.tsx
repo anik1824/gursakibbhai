@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { ArrowUpRight, ExternalLink, LogOut, Menu, Phone, RefreshCw, X } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { proxify, supabase } from '../lib/supabase';
 import { errorMessage } from '../lib/format';
 import { AdminUser } from '../types';
 import { AdminContext } from './context';
@@ -54,6 +54,20 @@ const BrandName: React.FC<{ size?: 'sm' | 'lg' }> = ({ size = 'sm' }) => (
   </span>
 );
 
+// সাইট সেটিংসের লোগো ব্যবহার হয়, না থাকলে ডিফল্ট মধুর লোগো
+let logoCache: Promise<string> | null = null;
+function useBrandLogo() {
+  const [logo, setLogo] = useState(BRAND_LOGO);
+  useEffect(() => {
+    logoCache ??= Promise.resolve(supabase!.from('settings').select('value').eq('key', 'settings').maybeSingle()).then(
+      ({ data }) => proxify(String(data?.value?.logo_url || '')) || BRAND_LOGO,
+      () => BRAND_LOGO
+    );
+    logoCache.then(setLogo);
+  }, []);
+  return logo;
+}
+
 const pageFromPath = () => window.location.pathname.replace(/^\/admin\/?/, '').split('/')[0] || 'dashboard';
 
 const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -75,6 +89,7 @@ function NotConfigured() {
 }
 
 function Login() {
+  const logo = useBrandLogo();
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -102,7 +117,7 @@ function Login() {
     <Shell>
       <form onSubmit={submit} className="w-full max-w-sm bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
         <div className="flex flex-col items-center text-center pb-1">
-          <img src={BRAND_LOGO} alt="Sakib's World" width={84} height={84} className="w-[84px] h-[84px] drop-shadow-md" />
+          <img src={logo} alt="Sakib's World" width={84} height={84} className="w-[84px] h-[84px] object-contain drop-shadow-md" />
           <h1 className="mt-3">
             <BrandName size="lg" />
           </h1>
@@ -200,6 +215,7 @@ function AdminRoot() {
 }
 
 function Layout({ me }: { me: AdminUser }) {
+  const logo = useBrandLogo();
   const [page, setPage] = useState(pageFromPath());
   const [query, setQuery] = useState(() => new URLSearchParams(window.location.search));
   const [menuOpen, setMenuOpen] = useState(false);
@@ -243,7 +259,7 @@ function Layout({ me }: { me: AdminUser }) {
   const sidebar = (
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100">
-        <img src={BRAND_LOGO} alt="" width={44} height={44} className="w-11 h-11 shrink-0" />
+        <img src={logo} alt="" width={44} height={44} className="w-11 h-11 object-contain shrink-0" />
         <div className="min-w-0">
           <BrandName />
           <p className="text-[11px] text-gray-500 mt-1">অ্যাডমিন প্যানেল</p>

@@ -14,8 +14,8 @@ import {
 export const DEFAULT_STORE: StoreSettings = {
   name: 'গ্রামের পণ্য',
   tagline: 'যশোরের খাঁটি ও ঐতিহ্যবাহী খেজুরের গুড়',
-  phone: '01580-946990',
-  whatsapp: '8801580946990',
+  phone: '01607-365565',
+  whatsapp: '8801607365565',
   address: 'বাঘারপাড়া, যশোর, বাংলাদেশ',
   logo_emoji: '🌴',
   logo_url: '/brand/sakibs-world-mark.svg',

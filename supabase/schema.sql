@@ -422,7 +422,7 @@ create policy media_delete on storage.objects for delete to authenticated using 
 -- ============ SEED DATA ============
 
 insert into public.settings (key, value) values
-  ('settings', '{"name":"গ্রামের পণ্য","tagline":"যশোরের খাঁটি ও ঐতিহ্যবাহী খেজুরের গুড়","phone":"01580-946990","whatsapp":"8801580946990","address":"বাঘারপাড়া, যশোর, বাংলাদেশ","logo_emoji":"🌴","logo_url":"","order_prefix":"GP","colors":{"primary":"#78350F","secondary":"#92400E","accent":"#B45309","background":"#FBF4E8"}}'),
+  ('settings', '{"name":"গ্রামের পণ্য","tagline":"যশোরের খাঁটি ও ঐতিহ্যবাহী খেজুরের গুড়","phone":"01607-365565","whatsapp":"8801607365565","address":"বাঘারপাড়া, যশোর, বাংলাদেশ","logo_emoji":"🌴","logo_url":"","order_prefix":"GP","colors":{"primary":"#78350F","secondary":"#92400E","accent":"#B45309","background":"#FBF4E8"}}'),
   ('delivery', '{"inside_dhaka":70,"outside_dhaka":130,"free_min_kg":2,"free_min_amount":0}'),
   ('fraud', '{"enabled":true,"max_orders_per_day":3,"min_address_length":8,"blocked_phones":[],"block_message":""}'),
   ('pixel', '{"pixel_id":""}'),
