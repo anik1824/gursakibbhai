@@ -42,11 +42,11 @@ export const ComparisonSection: React.FC = () => {
             {COMPARISON_POINTS.map((item, idx) => (
               <div
                 key={idx}
-                className="grid grid-cols-1 md:grid-cols-12 text-xs md:text-sm items-stretch hover:bg-[#FBF4E8]/50 transition-colors"
+                className="grid grid-cols-1 md:grid-cols-12 text-xs md:text-sm items-stretch hover:bg-[var(--c-bg)]/50 transition-colors"
               >
                 {/* Feature Name */}
                 <div className="md:col-span-4 p-3.5 md:p-4 font-bold text-[#451A03] bg-[#FAF3E9]/50 flex items-center">
-                  <span className="w-2 h-2 rounded-full bg-[#B45309] mr-2 shrink-0 md:inline-block hidden" />
+                  <span className="w-2 h-2 rounded-full bg-[var(--c-accent)] mr-2 shrink-0 md:inline-block hidden" />
                   {item.feature}
                 </div>
 
@@ -68,7 +68,7 @@ export const ComparisonSection: React.FC = () => {
 
         {/* 3 Quick Tips to Detect Pure Gur */}
         <div className="bg-[#FFFDF9] p-6 sm:p-8 rounded-2xl border border-[#DFCBB5] shadow-sm">
-          <div className="flex items-center gap-2.5 mb-4 text-[#92400E]">
+          <div className="flex items-center gap-2.5 mb-4 text-[var(--c-secondary)]">
             <HelpCircle className="w-6 h-6 text-[#D97706]" />
             <h3 className="text-xl font-bold font-bengali-serif text-[#3D1A07]">
               খাঁটি খেজুরের গুড় চেনার ৩টি সহজ উপায়:
@@ -76,8 +76,8 @@ export const ComparisonSection: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
-            <div className="bg-[#FBF4E8] p-4 rounded-xl border border-[#EADBCE]">
-              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[#92400E] font-bold flex items-center justify-center mb-2">
+            <div className="bg-[var(--c-bg)] p-4 rounded-xl border border-[#EADBCE]">
+              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[var(--c-secondary)] font-bold flex items-center justify-center mb-2">
                 ১
               </div>
               <h4 className="font-bold text-[#3D1A07] mb-1">রঙ ও স্বাভাবিক উজ্জ্বলতা</h4>
@@ -86,8 +86,8 @@ export const ComparisonSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#FBF4E8] p-4 rounded-xl border border-[#EADBCE]">
-              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[#92400E] font-bold flex items-center justify-center mb-2">
+            <div className="bg-[var(--c-bg)] p-4 rounded-xl border border-[#EADBCE]">
+              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[var(--c-secondary)] font-bold flex items-center justify-center mb-2">
                 ২
               </div>
               <h4 className="font-bold text-[#3D1A07] mb-1">স্বভাবসুলভ ঘ্রাণ ও কোমলতা</h4>
@@ -96,8 +96,8 @@ export const ComparisonSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-[#FBF4E8] p-4 rounded-xl border border-[#EADBCE]">
-              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[#92400E] font-bold flex items-center justify-center mb-2">
+            <div className="bg-[var(--c-bg)] p-4 rounded-xl border border-[#EADBCE]">
+              <div className="w-7 h-7 rounded-lg bg-[#FEF3C7] text-[var(--c-secondary)] font-bold flex items-center justify-center mb-2">
                 ৩
               </div>
               <h4 className="font-bold text-[#3D1A07] mb-1">পানিতে ও দুধে পরীক্ষা</h4>
