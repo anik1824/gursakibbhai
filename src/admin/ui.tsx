@@ -66,8 +66,11 @@ export const Button: React.FC<
   </button>
 );
 
+// className এ নিজস্ব width (w-…) থাকলে ডিফল্ট w-full বাদ যায়
+const widthCls = (className?: string) => (/(^|\s)(sm:|md:)?w-/.test(className || '') ? '' : 'w-full');
+
 const fieldCls =
-  'w-full px-3 py-2 rounded-xl border border-gray-200 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0B6B47]/40 focus:border-[#0B6B47]';
+  'px-3 py-2 rounded-xl border border-gray-200 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0B6B47]/40 focus:border-[#0B6B47]';
 
 export const Field: React.FC<{ label: string; hint?: string; children: React.ReactNode; className?: string }> = ({
   label,
@@ -83,15 +86,15 @@ export const Field: React.FC<{ label: string; hint?: string; children: React.Rea
 );
 
 export const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(({ className, ...p }, ref) => (
-  <input ref={ref} {...p} className={cx(fieldCls, className)} />
+  <input ref={ref} {...p} className={cx(fieldCls, widthCls(className), className)} />
 ));
 
 export const Textarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement>> = ({ className, ...p }) => (
-  <textarea {...p} className={cx(fieldCls, className)} />
+  <textarea {...p} className={cx(fieldCls, widthCls(className), className)} />
 );
 
 export const Select: React.FC<React.SelectHTMLAttributes<HTMLSelectElement>> = ({ className, ...p }) => (
-  <select {...p} className={cx(fieldCls, className)} />
+  <select {...p} className={cx(fieldCls, widthCls(className), className)} />
 );
 
 export const Toggle: React.FC<{ checked: boolean; onChange: (v: boolean) => void; label?: string }> = ({ checked, onChange, label }) => (

@@ -46,6 +46,14 @@ const PAGES: Record<string, React.FC> = {
   users: UsersPage,
 };
 
+const BRAND_LOGO = '/brand/sakibs-world-mark.svg';
+
+const BrandName: React.FC<{ size?: 'sm' | 'lg' }> = ({ size = 'sm' }) => (
+  <span className={cx('font-bold italic tracking-tight leading-none whitespace-nowrap', size === 'lg' ? 'text-2xl' : 'text-[17px]')}>
+    <span className="text-[#1C1917]">Sakib&rsquo;s</span> <span className="text-[#D97706]">World</span>
+  </span>
+);
+
 const pageFromPath = () => window.location.pathname.replace(/^\/admin\/?/, '').split('/')[0] || 'dashboard';
 
 const Shell: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -93,12 +101,15 @@ function Login() {
   return (
     <Shell>
       <form onSubmit={submit} className="w-full max-w-sm bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
-        <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full bg-[#0B6B47] text-white grid place-items-center font-bold text-lg">অ</div>
-          <div>
-            <h1 className="text-lg font-bold text-gray-900">অ্যাডমিন প্যানেল</h1>
-            <p className="text-xs text-gray-500">{mode === 'login' ? 'লগইন করুন' : 'নতুন অ্যাকাউন্ট তৈরি করুন'}</p>
-          </div>
+        <div className="flex flex-col items-center text-center pb-1">
+          <img src={BRAND_LOGO} alt="Sakib's World" width={84} height={84} className="w-[84px] h-[84px] drop-shadow-md" />
+          <h1 className="mt-3">
+            <BrandName size="lg" />
+          </h1>
+          <p className="text-[11px] text-[#15803D] font-semibold mt-1">প্রকৃতির বিশুদ্ধ স্বাদের বিশ্বস্ত ঠিকানা</p>
+          <p className="text-xs text-gray-500 mt-3">
+            অ্যাডমিন প্যানেল • {mode === 'login' ? 'লগইন করুন' : 'নতুন অ্যাকাউন্ট তৈরি করুন'}
+          </p>
         </div>
         <Field label="ইমেইল">
           <Input type="email" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -123,7 +134,6 @@ function Login() {
             {mode === 'login' ? 'অ্যাকাউন্ট তৈরি করুন' : 'লগইন করুন'}
           </button>
         </p>
-        <p className="text-[11px] text-gray-400 text-center">শুধু অনুমতিপ্রাপ্ত ইমেইল দিয়ে প্যানেলে ঢোকা যাবে। প্রথম অ্যাকাউন্টটি স্বয়ংক্রিয়ভাবে মালিক (Owner) হবে।</p>
       </form>
     </Shell>
   );
@@ -233,10 +243,10 @@ function Layout({ me }: { me: AdminUser }) {
   const sidebar = (
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-100">
-        <div className="w-10 h-10 rounded-full bg-[#0B6B47] text-white grid place-items-center font-bold text-lg shrink-0">{storeName.slice(0, 1)}</div>
+        <img src={BRAND_LOGO} alt="" width={44} height={44} className="w-11 h-11 shrink-0" />
         <div className="min-w-0">
-          <p className="font-bold text-gray-900 truncate">{storeName}</p>
-          <p className="text-[11px] text-gray-500">অ্যাডমিন প্যানেল</p>
+          <BrandName />
+          <p className="text-[11px] text-gray-500 mt-1">অ্যাডমিন প্যানেল</p>
         </div>
         <button className="ml-auto lg:hidden p-1.5 rounded-lg hover:bg-gray-100 cursor-pointer" onClick={() => setMenuOpen(false)} aria-label="মেনু বন্ধ">
           <X className="w-5 h-5" />

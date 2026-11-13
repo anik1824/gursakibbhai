@@ -7,6 +7,15 @@ import './index.css';
 const AdminApp = lazy(() => import('./admin/AdminApp'));
 const isAdmin = window.location.pathname.startsWith('/admin');
 
+if (isAdmin) {
+  document.title = "Sakib's World — অ্যাডমিন প্যানেল";
+  const icon = document.createElement('link');
+  icon.rel = 'icon';
+  icon.type = 'image/svg+xml';
+  icon.href = '/brand/sakibs-world-mark.svg';
+  document.head.appendChild(icon);
+}
+
 createRoot(document.getElementById('root')!).render(
   isAdmin ? (
     <Suspense fallback={<div className="min-h-screen grid place-items-center text-sm text-gray-500">লোড হচ্ছে...</div>}>
