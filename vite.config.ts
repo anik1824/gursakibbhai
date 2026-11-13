@@ -3,6 +3,15 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+// প্রোডাকশনে vercel.json একই কাজ করে
+const supabaseProxy = {
+  '/sb': {
+    target: 'https://aflbrgilchpmwshbmsvv.supabase.co',
+    changeOrigin: true,
+    rewrite: (p: string) => p.replace(/^\/sb/, ''),
+  },
+};
+
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
@@ -17,6 +26,10 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      proxy: supabaseProxy,
+    },
+    preview: {
+      proxy: supabaseProxy,
     },
   };
 });

@@ -7,7 +7,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const href = whatsappLink(store.whatsapp, `আসসালামু আলাইকুম, আমি ${store.name} এর পণ্য সম্পর্কে জানতে চাই`);
 
   return (
-    <aside aria-label="WhatsApp Support" className="fixed bottom-18 sm:bottom-6 right-3.5 sm:right-6 z-50 flex items-center justify-center">
+    <aside aria-label="WhatsApp Support" className="fixed bottom-24 sm:bottom-6 right-3.5 sm:right-6 z-50 flex items-center justify-center">
       <div className="absolute inset-0 rounded-full bg-[#25D366]/30 animate-ping pointer-events-none" />
       <a
         href={href}

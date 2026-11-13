@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from './supabase';
+import { proxify, supabase } from './supabase';
 import {
   DEFAULT_BANNERS,
   DEFAULT_CATEGORIES,
@@ -80,7 +80,7 @@ export async function loadSiteData(): Promise<SiteData> {
   settings.data?.forEach((r: { key: string; value: Record<string, unknown> }) => (s[r.key] = r.value));
   const num = (v: unknown, d: number) => (v === undefined || v === null || v === '' || isNaN(Number(v)) ? d : Number(v));
   const del = s.delivery || {};
-  return {
+  return proxify({
     store: merge(DEFAULT_STORE, s.settings),
     delivery: {
       inside_dhaka: num(del.inside_dhaka, DEFAULT_DELIVERY.inside_dhaka),
@@ -98,7 +98,7 @@ export async function loadSiteData(): Promise<SiteData> {
     gtmId: String(s.gtm?.container_id ?? '').trim(),
     customCss: String(s.css?.css ?? ''),
     loading: false,
-  };
+  });
 }
 
 function applyTheme(data: SiteData) {

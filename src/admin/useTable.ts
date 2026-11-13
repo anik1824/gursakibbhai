@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { proxify, supabase } from '../lib/supabase';
 import { errorMessage } from '../lib/format';
 import { useToast } from './ui';
 
@@ -13,7 +13,7 @@ export function useTable<T extends Row>(table: string, orderBy = 'sort') {
   const reload = useCallback(async () => {
     const { data, error } = await supabase!.from(table).select('*').order(orderBy, { ascending: orderBy === 'sort' });
     if (error) toast('error', errorMessage(error));
-    setRows((data || []) as T[]);
+    setRows(proxify((data || []) as T[]));
     setLoading(false);
   }, [table, orderBy, toast]);
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { MessageCircle, Phone, Printer, Search, Send, Trash2, Truck, RefreshCw, Pencil } from 'lucide-react';
-import { supabase } from '../../lib/supabase';
+import { proxify, supabase } from '../../lib/supabase';
 import { bnMoney, errorMessage, isValidBdPhone, normalizePhone, toBn, whatsappLink } from '../../lib/format';
 import { Order, OrderStatus } from '../../types';
 import { useAdmin } from '../context';
@@ -347,7 +347,7 @@ export default function Orders() {
     setLoading(true);
     const { data, count: c, error } = await buildQuery(0);
     if (error) toast('error', errorMessage(error));
-    setOrders((data || []) as Order[]);
+    setOrders(proxify((data || []) as Order[]));
     setCount(c || 0);
     setSelected(new Set());
     setLoading(false);
@@ -366,7 +366,7 @@ export default function Orders() {
 
   const loadMore = async () => {
     const { data } = await buildQuery(orders.length);
-    setOrders((o) => [...o, ...((data || []) as Order[])]);
+    setOrders((o) => [...o, ...proxify((data || []) as Order[])]);
   };
 
   const replace = (o: Order) => {

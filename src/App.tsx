@@ -32,7 +32,7 @@ export default function App() {
     <div className="min-h-screen bg-[var(--c-bg)] text-[#2C1810] flex flex-col selection:bg-[var(--c-accent)] selection:text-white overflow-x-hidden">
       <Header onScrollToOrder={scrollToOrderForm} />
 
-      <main className="flex-1 pb-20 sm:pb-8">
+      <main className="flex-1 pb-28 sm:pb-8">
         <Hero onScrollToOrder={scrollToOrderForm} />
 
         {packages.length > 0 && (

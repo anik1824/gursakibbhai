@@ -9,13 +9,12 @@ interface HeaderProps {
 
 export const StoreLogo: React.FC<{ className?: string }> = ({ className = '' }) => {
   const { store } = useSite();
+  if (store.logo_url) {
+    return <img src={store.logo_url} alt={store.name} className={`object-contain shrink-0 drop-shadow-sm ${className}`} />;
+  }
   return (
     <div className={`rounded-xl bg-gradient-to-br from-[var(--c-primary)] to-[#451A03] flex items-center justify-center shadow-md text-white font-bold border border-[var(--c-accent)] shrink-0 overflow-hidden ${className}`}>
-      {store.logo_url ? (
-        <img src={store.logo_url} alt={store.name} className="w-full h-full object-cover" />
-      ) : (
-        <span className="text-lg sm:text-xl">{store.logo_emoji}</span>
-      )}
+      <span className="text-lg sm:text-xl">{store.logo_emoji}</span>
     </div>
   );
 };
@@ -51,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ onScrollToOrder }) => {
 
       <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
         <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
-          <StoreLogo className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+          <StoreLogo className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14" />
           <div className="min-w-0">
             <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
               <span className="text-lg sm:text-xl md:text-2xl font-bold font-bengali-serif text-[#451A03] tracking-tight">

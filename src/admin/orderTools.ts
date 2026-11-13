@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { proxify, supabase } from '../lib/supabase';
 import { DEFAULT_DELIVERY, DEFAULT_STORE } from '../data/gurData';
 import { DeliverySettings, GurPackage, Order, Product, StoreSettings } from '../types';
 import { bnMoney, toBn } from '../lib/format';
@@ -23,8 +23,8 @@ export function useCatalog(): Catalog {
       const get = (key: string) => s.data?.find((r) => r.key === key)?.value || {};
       const d = get('delivery');
       setC({
-        products: (p.data || []) as Product[],
-        packages: (k.data || []) as GurPackage[],
+        products: proxify((p.data || []) as Product[]),
+        packages: proxify((k.data || []) as GurPackage[]),
         delivery: {
           inside_dhaka: Number(d.inside_dhaka ?? DEFAULT_DELIVERY.inside_dhaka),
           outside_dhaka: Number(d.outside_dhaka ?? DEFAULT_DELIVERY.outside_dhaka),

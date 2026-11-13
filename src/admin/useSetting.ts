@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { proxify, supabase } from '../lib/supabase';
 import { errorMessage } from '../lib/format';
 import { useToast } from './ui';
 
@@ -17,7 +17,7 @@ export function useSetting<T extends object>(key: string, defaults: T, table: 's
       .maybeSingle()
       .then(({ data, error }) => {
         if (error) toast('error', errorMessage(error));
-        if (data?.value) setValue({ ...defaults, ...(data.value as T) });
+        if (data?.value) setValue(proxify({ ...defaults, ...(data.value as T) }));
         setLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps

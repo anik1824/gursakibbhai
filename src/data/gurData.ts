@@ -18,7 +18,7 @@ export const DEFAULT_STORE: StoreSettings = {
   whatsapp: '8801580946990',
   address: 'বাঘারপাড়া, যশোর, বাংলাদেশ',
   logo_emoji: '🌴',
-  logo_url: '',
+  logo_url: '/brand/sakibs-world-mark.svg',
   order_prefix: 'GP',
   colors: { primary: '#78350F', secondary: '#92400E', accent: '#B45309', background: '#FBF4E8' },
 };
